@@ -10,6 +10,8 @@ Página de inicio minimalista (tema oscuro, negro puro para pantallas AMOLED) co
 | Biblia Quiz   | https://mcl-biblia-quiz.netlify.app   |
 | Arcade        | https://mcl-arcade.netlify.app        |
 | Tiles         | https://mcl-tiles.netlify.app         |
+| Archer        | https://mcl-archer.netlify.app        |
+| Slug          | https://mcl-slug.netlify.app          |
 
 ## Estructura
 
