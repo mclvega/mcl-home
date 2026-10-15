@@ -13,6 +13,7 @@ Página de inicio minimalista (tema oscuro, negro puro para pantallas AMOLED) co
 | Archer        | https://mcl-archer.netlify.app        |
 | Slug          | https://mcl-slug.netlify.app          |
 | Snow          | https://mcl-snow.netlify.app          |
+| Stick War     | https://mcl-stickwar.netlify.app      |
 
 ## Estructura
 
