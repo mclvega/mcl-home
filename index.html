@@ -11,8 +11,8 @@
 <style>
   :root {
     --bg: #000;
-    --card: #0b0b0d;
-    --border: #1c1c22;
+    --card: #000;
+    --border: #222;
     --text: #f2f2f5;
     --muted: #8a8a96;
   }
@@ -49,6 +49,15 @@
   .card h2 { font-size: 1.05rem; font-weight: 600; }
   .card p { color: var(--muted); font-size: .85rem; line-height: 1.4; }
   .go { margin-top: auto; font-size: .8rem; color: var(--accent); font-weight: 600; }
+  .corta { display: none; }
+  /* Móvil: dos columnas, solo el ícono y una descripción corta; toda la tarjeta lleva al juego. */
+  @media (max-width: 600px) {
+    main { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    a.card { align-items: center; text-align: center; gap: 10px; padding: 18px 10px; }
+    .icon { width: 64px; height: 64px; border-radius: 18px; font-size: 2rem; }
+    .card .info, .go { display: none; }
+    .corta { display: block; color: var(--text); font-size: .85rem; font-weight: 600; line-height: 1.3; }
+  }
   footer { max-width: 960px; margin: 32px auto 0; color: #44444c; font-size: .75rem; text-align: center; }
 </style>
 </head>
@@ -64,20 +73,21 @@
 
 <script>
   const games = [
-    { name: "Last Survival", url: "https://mcl-last-survival.netlify.app", icon: "🔥", accent: "#ff8a1f", desc: "Sobrevive el mayor tiempo posible." },
-    { name: "Biblia Quiz",   url: "https://mcl-biblia-quiz.netlify.app",   icon: "📖", accent: "#c0394b", desc: "Pon a prueba tus conocimientos bíblicos." },
-    { name: "Arcade",        url: "https://mcl-arcade.netlify.app",        icon: "🕹️", accent: "#4caf50", desc: "Colección de minijuegos clásicos." },
-    { name: "Tiles",         url: "https://mcl-tiles.netlify.app",         icon: "🧩", accent: "#f0b45a", desc: "Juega con fichas, quédate tranquilo." },
-    { name: "Archer",        url: "https://mcl-archer.netlify.app",        icon: "🏹", accent: "#ffcf4a", desc: "Esquiva, quédate quieto y dispara. Salas sin fin." },
-    { name: "Slug",          url: "https://mcl-slug.netlify.app",          icon: "🪖", accent: "#ff7a1a", desc: "Acción 2D: rescata rehenes y vence jefes." },
-    { name: "Snow",          url: "https://mcl-snow.netlify.app",          icon: "❄️", accent: "#7fd0ff", desc: "Shooter por equipos en la nieve, como fy_snow." },
-    { name: "Stick War",     url: "https://mcl-stickwar.netlify.app",      icon: "⚔️", accent: "#ffd27a", desc: "Mina oro, entrena tu ejército y derriba la estatua enemiga." },
+    { name: "Last Survival", url: "https://mcl-last-survival.netlify.app", icon: "🔥", accent: "#ff8a1f", desc: "Sobrevive el mayor tiempo posible.", corta: "Sobrevive a los zombis" },
+    { name: "Biblia Quiz",   url: "https://mcl-biblia-quiz.netlify.app",   icon: "📖", accent: "#c0394b", desc: "Pon a prueba tus conocimientos bíblicos.", corta: "Preguntas bíblicas" },
+    { name: "Arcade",        url: "https://mcl-arcade.netlify.app",        icon: "🕹️", accent: "#4caf50", desc: "Colección de minijuegos clásicos.", corta: "Tus propias tiendas" },
+    { name: "Tiles",         url: "https://mcl-tiles.netlify.app",         icon: "🧩", accent: "#f0b45a", desc: "Juega con fichas, quédate tranquilo.", corta: "Junta tres fichas" },
+    { name: "Archer",        url: "https://mcl-archer.netlify.app",        icon: "🏹", accent: "#ffcf4a", desc: "Esquiva, quédate quieto y dispara. Salas sin fin.", corta: "Arquero sin fin" },
+    { name: "Slug",          url: "https://mcl-slug.netlify.app",          icon: "🪖", accent: "#ff7a1a", desc: "Acción lateral en 3D: rescata rehenes y vence jefes.", corta: "Acción y rehenes" },
+    { name: "Snow",          url: "https://mcl-snow.netlify.app",          icon: "❄️", accent: "#7fd0ff", desc: "Shooter por equipos en la nieve, como fy_snow.", corta: "Shooter en la nieve" },
+    { name: "Stick War",     url: "https://mcl-stickwar.netlify.app",      icon: "⚔️", accent: "#ffd27a", desc: "Mina oro, entrena tu ejército y derriba la estatua enemiga.", corta: "Derriba la estatua" },
   ];
 
   document.getElementById("games").innerHTML = games.map(g => `
-    <a class="card" href="${g.url}" style="--accent:${g.accent}">
+    <a class="card" href="${g.url}" style="--accent:${g.accent}" aria-label="${g.name}: ${g.desc}">
       <div class="icon">${g.icon}</div>
-      <div>
+      <span class="corta">${g.corta}</span>
+      <div class="info">
         <h2>${g.name}</h2>
         <p>${g.desc}</p>
       </div>
