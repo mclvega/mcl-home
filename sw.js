@@ -4,7 +4,7 @@
  * Archivos: primero la caché y, en segundo plano, se actualiza desde la red.
  * Páginas: primero la red (para recibir versiones nuevas) y, sin conexión, la copia guardada.
  */
-const VERSION = '4';
+const VERSION = '5';
 const CACHE = `mcl-home-${VERSION}`;
 const ARCHIVOS = ['/', '/index.html', '/favicon.svg', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png', '/apple-touch-icon.png'];
 
